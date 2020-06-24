@@ -10,6 +10,10 @@ var UserSchema = new Schema(
   { collection: "users-data" }
 );
 
-var userData = mongoose.model("UserData", UserSchema);
+export interface UserDataInterface {
+  id: number;
+  name: string;
+  passWord: string;
+}
 
-module.exports = userData;
+export var userData = mongoose.model("UserData", UserSchema);
