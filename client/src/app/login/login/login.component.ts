@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { LoginService } from '../services/login.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -26,22 +26,24 @@ export class LoginComponent implements OnInit {
     this.loginService
       .authUser(userName, passWord)
       .subscribe((data: Array<User>) => {
-        debugger;
         if (data.length < 1) {
           // user doesnt exist
         } else {
           switch (data[0].userType) {
             case 'admin':
-              console.log('admin');
+              this.router.navigate(['/admin']);
               break;
             case 'guard':
-              console.log('guard');
+              this.router.navigate(['/guard']);
               break;
             case 'branch':
-              console.log('branch');
+              this.router.navigate(['/branch']);
               break;
             case 'guest':
-              console.log('guest');
+              this.router.navigate(['/guest']);
+              break;
+            default:
+              this.router.navigate(['/login']);
               break;
           }
         }

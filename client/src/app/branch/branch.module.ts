@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { BranchRoutingModule } from './branch-routing.module';
+import { BranchShellComponent } from './branch-shell/branch-shell.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [BranchShellComponent],
+  imports: [CommonModule, BranchRoutingModule],
 })
-export class BranchModule { }
+export class BranchModule {}
