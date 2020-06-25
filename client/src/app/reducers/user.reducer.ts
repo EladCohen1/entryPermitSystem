@@ -6,6 +6,7 @@ const initState: User = {
   id: null,
   name: null,
   email: null,
+  type: null,
 };
 
 export function userReducer(

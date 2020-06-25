@@ -1,1 +1,69 @@
-<p>Login Works!</p>
+<div class="cont">
+  <div class="demo">
+    <div class="login">
+      <div class="login__check">
+        <img
+          style="box-sizing: border-box; padding: 40px;"
+          src="../../../assets/loginIcon.png"
+          height="190px"
+          width="50%"
+        />
+      </div>
+      <h1
+        style="
+          color: #fff;
+          text-align: center;
+          font-size: 72px;
+          line-height: 60px;
+        "
+      >
+        מערכת ניהול אישורי כניסה
+      </h1>
+      <form [formGroup]="loginForm" class="login__form">
+        <div class="login__row">
+          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+              d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8"
+            />
+          </svg>
+          <input
+            formControlName="userName"
+            type="text"
+            class="login__input name"
+            placeholder="שם משתמש"
+          />
+        </div>
+        <div class="login__row">
+          <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+            <path
+              d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0"
+            />
+          </svg>
+          <input
+            formControlName="passWord"
+            type="password"
+            class="login__input pass"
+            placeholder="סיסמא"
+          />
+        </div>
+        <button
+          (click)="loginOnClick()"
+          [disabled]="!loginForm.valid"
+          type="button"
+          class="login__submit"
+        >
+          התחברות למערכת
+        </button>
+        <p class="login__signup">&nbsp;<a>הרשמה</a></p>
+        <p class="login__signup">&nbsp;<a>פתיחת טופס ללא הרשמה</a></p>
+      </form>
+    </div>
+    <div class="app">
+      <div class="app__top">
+        <div class="app__menu-btn">
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
