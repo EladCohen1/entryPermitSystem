@@ -4,9 +4,9 @@ import * as UserActions from '../actions/user.actions';
 
 const initState: User = {
   id: null,
-  name: null,
-  email: null,
-  type: null,
+  userName: null,
+  passWord: null,
+  userType: null,
 };
 
 export function userReducer(

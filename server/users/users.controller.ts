@@ -5,13 +5,16 @@ mongoose.connect("mongodb://localhost:27017/entryPermitDB", {
 import { userData, UserDataInterface } from "./users.model";
 
 export class usersController {
-  public static async getUser() {
-    return userData.find();
-  }
-
   public static async createUser(newUserData: UserDataInterface) {
     var newUser = new userData(newUserData);
     return newUser.save();
+  }
+
+  public static async authUser(userDataToAuth: UserDataInterface) {
+    return userData.find({
+      userName: userDataToAuth.userName,
+      passWord: userDataToAuth.passWord,
+    });
   }
 }
 

@@ -20,7 +20,7 @@ export type Actions = ChangeUserType;
 //private store: Store<State>
 
 // this.store.dispatch(
-//   new UserActions.ChangeUserType({ id: 1, name: 'ddrr', email: 'asd', type: 'admin' })
+//   new UserActions.ChangeUserType({ id: 1, userName: 'ddrr', passWord: 'asd', userType: 'admin' })
 // );
 // this.store
 //   .select((state: State) => state.user)
