@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -23,30 +22,6 @@ export class LoginComponent implements OnInit {
   loginOnClick() {
     var userName = this.loginForm.get('userName').value;
     var passWord = this.loginForm.get('passWord').value;
-    this.loginService
-      .authUser(userName, passWord)
-      .subscribe((data: Array<User>) => {
-        if (data.length < 1) {
-          // user doesnt exist
-        } else {
-          switch (data[0].userType) {
-            case 'admin':
-              this.router.navigate(['/admin']);
-              break;
-            case 'guard':
-              this.router.navigate(['/guard']);
-              break;
-            case 'branch':
-              this.router.navigate(['/branch']);
-              break;
-            case 'guest':
-              this.router.navigate(['/guest']);
-              break;
-            default:
-              this.router.navigate(['/login']);
-              break;
-          }
-        }
-      });
+    this.loginService.authUser(userName, passWord);
   }
 }
