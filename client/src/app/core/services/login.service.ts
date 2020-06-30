@@ -19,7 +19,7 @@ export class LoginService {
   url: string = 'http://localhost:3000';
 
   authUser(userName: string, passWord: string) {
-    return this.http
+    this.http
       .post(this.url + '/users/auth', {
         userName: userName,
         passWord: passWord,
@@ -29,23 +29,7 @@ export class LoginService {
           // user doesnt exist
         } else {
           this.store.dispatch(new UserActions.ChangeUserType(data[0]));
-          switch (data[0].userType) {
-            case 'admin':
-              this.router.navigate(['/admin']);
-              break;
-            case 'guard':
-              this.router.navigate(['/guard']);
-              break;
-            case 'branch':
-              this.router.navigate(['/branch']);
-              break;
-            case 'guest':
-              this.router.navigate(['/guest']);
-              break;
-            default:
-              this.router.navigate(['/login']);
-              break;
-          }
+          this.checkUserPermission(data[0].userType);
         }
       });
   }
@@ -57,9 +41,19 @@ export class LoginService {
         if (data.userType == null) {
           this.router.navigate([`/login`]);
         }
-        if (data.userType != userType) {
-          this.router.navigate([`/${data.userType}`]);
-        }
+        this.router.navigate([`/${data.userType}`]);
+      });
+  }
+
+  createUser(userName: string, passWord: string, id: number) {
+    this.http
+      .post(this.url + '/users/createUser', {
+        userName: userName,
+        passWord: passWord,
+        id: id,
+      })
+      .subscribe((data: User) => {
+        this.router.navigate(['/login']);
       });
   }
 }
