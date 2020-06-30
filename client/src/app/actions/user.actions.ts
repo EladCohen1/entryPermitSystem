@@ -16,6 +16,7 @@ export type Actions = ChangeUserType;
 // import { Observable } from 'rxjs';
 // import * as UserActions from '../../actions/user.actions';
 // import { State } from 'src/app/models/state.model';
+// import { Store } from '@ngrx/store';
 
 //private store: Store<State>
 

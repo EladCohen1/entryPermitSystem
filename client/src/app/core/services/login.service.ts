@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/models/state.model';
+import * as UserActions from '../../actions/user.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private store: Store<State>
+  ) {}
 
   url: string = 'http://localhost:3000';
 
@@ -21,6 +28,7 @@ export class LoginService {
         if (data.length < 1) {
           // user doesnt exist
         } else {
+          this.store.dispatch(new UserActions.ChangeUserType(data[0]));
           switch (data[0].userType) {
             case 'admin':
               this.router.navigate(['/admin']);
@@ -38,6 +46,19 @@ export class LoginService {
               this.router.navigate(['/login']);
               break;
           }
+        }
+      });
+  }
+
+  checkUserPermission(userType) {
+    this.store
+      .select((state) => state.user)
+      .subscribe((data: User) => {
+        if (data.userType == null) {
+          this.router.navigate([`/login`]);
+        }
+        if (data.userType != userType) {
+          this.router.navigate([`/${data.userType}`]);
         }
       });
   }

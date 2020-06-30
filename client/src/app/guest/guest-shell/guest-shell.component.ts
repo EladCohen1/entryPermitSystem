@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-guest-shell',
@@ -7,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./guest-shell.component.scss'],
 })
 export class GuestShellComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private loginService: LoginService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginService.checkUserPermission('guest');
+  }
 }
