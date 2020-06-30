@@ -13,7 +13,7 @@ import { userReducer } from './reducers/user.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
+    CoreModule.forRoot(),
     BrowserAnimationsModule,
     StoreModule.forRoot({
       user: userReducer,
