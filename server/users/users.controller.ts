@@ -12,7 +12,7 @@ export class usersController {
       id: id,
       userName: name,
       passWord: encryptedPass,
-      userType: "guard",
+      userType: "guest",
     };
     var newUser = new userData(newUserObj);
     return newUser.save();

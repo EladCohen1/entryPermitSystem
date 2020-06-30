@@ -4,7 +4,7 @@ var express = require("express");
 var router = express.Router();
 var usersController = require("./users.controller");
 
-router.post("/", function (req: any, res: any, next: any) {
+router.post("/createUser", function (req: any, res: any, next: any) {
   usersController
     .createUser(req.body.userName, req.body.passWord, req.body.id)
     .then(function (data: any) {
