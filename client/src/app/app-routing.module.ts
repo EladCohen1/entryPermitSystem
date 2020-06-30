@@ -27,6 +27,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
+  {
+    path: 'non-users',
+    loadChildren: () =>
+      import('./non-users/non-users.module').then((m) => m.NonUsersModule),
+  },
   { path: '**', redirectTo: '/login' },
 ];
 
