@@ -10,6 +10,6 @@ export class GuardShellComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.loginService.checkUserPermission('guard');
+    this.loginService.checkUserPermission();
   }
 }

@@ -29,12 +29,12 @@ export class LoginService {
           // user doesnt exist
         } else {
           this.store.dispatch(new UserActions.ChangeUserType(data[0]));
-          this.checkUserPermission(data[0].userType);
+          this.checkUserPermission();
         }
       });
   }
 
-  checkUserPermission(userType) {
+  checkUserPermission() {
     this.store
       .select((state) => state.user)
       .subscribe((data: User) => {

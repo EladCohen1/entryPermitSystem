@@ -16,6 +16,6 @@ export class AdminShellComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.loginService.checkUserPermission('admin');
+    this.loginService.checkUserPermission();
   }
 }
