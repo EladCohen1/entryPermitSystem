@@ -10,6 +10,6 @@ export class BranchShellComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.loginService.checkUserPermission('branch');
+    this.loginService.checkUserPermission();
   }
 }
