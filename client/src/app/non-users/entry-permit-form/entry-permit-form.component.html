@@ -1,8 +1,129 @@
-<div style="display: flex; height: 100%;">
+<div class="mainCtr" style="display: flex; height: 100%;">
   <div class="cont">
-    <div class="demo"></div>
+    <div class="demo">
+      <div class="login">
+        <div class="login__check">
+          <img
+            style="box-sizing: border-box; padding: 40px;"
+            src="../../../assets/loginIcon.png"
+            height="190px"
+            width="50%"
+          />
+        </div>
+        <h1
+          style="
+            color: #fff;
+            text-align: center;
+            font-size: 45px;
+            line-height: 60px;
+            width: 90%;
+            margin: auto;
+          "
+        >
+          בדיקת סטטוס של אישורים קיימים
+        </h1>
+        <form [formGroup]="checkRequestForm" class="login__form">
+          <div class="login__row">
+            <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+              <path
+                d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8"
+              />
+            </svg>
+            <input
+              type="text"
+              class="login__input name"
+              placeholder="מזהה בקשה"
+            />
+          </div>
+          <button type="button" class="login__submit">
+            בדוק סטטוס
+          </button>
+          <p class="login__signup">
+            &nbsp;<a (click)="outClick('non-users/register')">הרשמה</a>
+          </p>
+          <p class="login__signup">
+            &nbsp;<a (click)="outClick('login')">התחברות</a>
+          </p>
+        </form>
+      </div>
+      <div class="app">
+        <div class="app__top">
+          <div class="app__menu-btn">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="formCtr">
+  <div *ngIf="showEntryPermitForm" @slide class="formCtr">
     <h1 class="formTitle">טופס בקשה חדשה</h1>
+    <div>
+      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="guestData">
+          <form [formGroup]="guestData">
+            <ng-template matStepLabel>מידע על האורח</ng-template>
+            <mat-form-field>
+              <mat-label>שם האורח</mat-label>
+              <input
+                matInput
+                placeholder="שם האורח"
+                formControlName="name"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>ת.ז של האורח</mat-label>
+              <input
+                matInput
+                placeholder="ת.ז של האורח"
+                formControlName="id"
+                type="number"
+                required
+              />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="otherData">
+          <form [formGroup]="otherData">
+            <ng-template matStepLabel>מיקום</ng-template>
+            <mat-form-field>
+              <mat-label>מתחם/ענף</mat-label>
+              <input
+                matInput
+                formControlName="area"
+                placeholder="Ex. 1 Main St, New York, NY"
+                required
+              />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>הערות</ng-template>
+
+          <!-- הערות -->
+          <mat-form-field style="width: 50%;" appearance="fill">
+            <mat-label>הערות</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+          <div>
+            <!-- כפתור שליחה -->
+            <button mat-button (click)="stepper.reset()">שלח</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+      <img
+        class="entryFormIcon"
+        width="200px"
+        height="200px"
+        src="../../../assets/entryFormIcon.png"
+      />
+    </div>
   </div>
 </div>
