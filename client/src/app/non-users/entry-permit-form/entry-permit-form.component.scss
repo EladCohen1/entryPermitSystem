@@ -22,6 +22,34 @@ body {
     font-size: 50%;
   }
 }
+.entryFormCloseIcon {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  display: block;
+  margin: 10px auto;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.arrowCtr {
+  width: 50px;
+  height: 50px;
+  background-color: rgba($color: #fff, $alpha: 1);
+  position: absolute;
+  right: 0;
+  top: 25px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.entryFormCloseIconReversed {
+  transform: rotate(180deg);
+  display: block;
+  margin: 10px auto;
+  &:hover {
+    cursor: pointer;
+  }
+}
 input,
 button {
   outline: none;
@@ -60,6 +88,7 @@ button {
   background-image: url("../../../assets/entryFormBackground.png");
   background-size: cover;
   transition-duration: 500ms;
+  position: relative;
 }
 .formTitle {
   margin: 70px auto;

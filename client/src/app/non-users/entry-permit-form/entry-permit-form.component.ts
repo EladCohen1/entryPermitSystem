@@ -23,6 +23,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class EntryPermitFormComponent implements OnInit {
   showEntryPermitForm: boolean = true;
+  check: boolean = true;
+  outArrow: boolean = false;
   isLinear: boolean = true;
   guestData: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -54,6 +56,13 @@ export class EntryPermitFormComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
+  }
+
+  toggleEntryPermitForm() {
+    this.showEntryPermitForm = !this.showEntryPermitForm;
+    setTimeout(() => {
+      this.outArrow = !this.outArrow;
+    }, 500);
   }
 
   ngOnInit() {}
