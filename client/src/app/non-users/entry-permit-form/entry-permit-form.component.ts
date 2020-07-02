@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/core/services/login.service';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-entry-permit-form',
@@ -34,7 +35,7 @@ export class EntryPermitFormComponent implements OnInit {
     area: new FormControl('', Validators.required),
   });
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private snackBar: MatSnackBar) {}
 
   outClick(path) {
     this.showEntryPermitForm = false;
@@ -43,6 +44,16 @@ export class EntryPermitFormComponent implements OnInit {
         this.router.navigate([path]);
       }, 500);
     }
+  }
+
+  checkStatus() {
+    // get status
+    var status = 'אושר';
+    this.snackBar.open('סטטוס - ' + status, 'סגור', {
+      duration: 10 * 1000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 
   ngOnInit() {}
