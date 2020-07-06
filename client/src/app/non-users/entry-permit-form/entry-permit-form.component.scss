@@ -61,6 +61,7 @@ button {
   overflow: auto;
   font-family: $openSans;
   width: 60%;
+  margin: auto;
 }
 .mainCtr {
   position: relative;
@@ -69,6 +70,8 @@ button {
   background-size: cover;
   overflow: auto;
   overflow-x: hidden;
+  display: flex;
+  height: 100%;
 }
 .demo {
   position: absolute;
@@ -89,6 +92,7 @@ button {
   background-size: cover;
   transition-duration: 500ms;
   position: relative;
+  direction: rtl;
 }
 .formTitle {
   margin: 70px auto;
